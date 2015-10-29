@@ -1,0 +1,12 @@
+spring:
+  main:
+    show_banner: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/testdb
+    username: testuser
+    password: testpass
+    driverClassName: com.mysql.jdbc.Driver
