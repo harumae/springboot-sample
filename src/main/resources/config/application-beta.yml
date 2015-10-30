@@ -4,15 +4,15 @@ spring:
   main:
     show_banner: false
   jpa:
-    show-db.sql: true
+    show-db.sql: false
     hibernate:
       # validate: validate the schema, makes no changes to the database.
       # update: update the schema.
       # create: creates the schema, destroying previous data.
       # create-drop: drop the schema at the end of the session.
-      ddl-auto: none
+      ddl-auto: validate
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/spring_boot
+    url: jdbc:mysql://127.0.0.1:3307/spring_boot_beta
     username: sb_user
     password: sb_pass
     driverClassName: com.mysql.jdbc.Driver
