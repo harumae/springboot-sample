@@ -3,11 +3,14 @@ package local.mywork.springboot;
 import local.mywork.springboot.model.Customer;
 import local.mywork.springboot.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specifications;
+
+import static local.mywork.springboot.repository.CustomerSpecifications.containsFirstName;
+import static local.mywork.springboot.repository.CustomerSpecifications.containsLastName;
 
 @Slf4j
 @SpringBootApplication
@@ -30,6 +33,16 @@ public class Application {
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
 			for (Customer customer : repository.findAll()) {
+				log.info(customer.toString());
+			}
+			log.info("");
+
+			// fetch customers with criteria
+			log.info("Customers found with findAll(Specifications):");
+			log.info("-------------------------------");
+			for (Customer customer : repository.findAll(Specifications
+				.where(containsFirstName("David"))
+				.and(containsLastName("Palmer")))) {
 				log.info(customer.toString());
 			}
 			log.info("");
