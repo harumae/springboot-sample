@@ -11,6 +11,15 @@ import javax.persistence.criteria.Root;
 import java.util.Objects;
 
 public class CustomerSpecifications {
+	public static Specification<Customer> equalsFirstName(String firstName) {
+		return Objects.isNull(firstName) ? null : new Specification<Customer>() {
+			@Override
+			public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+				return cb.equal(root.get("firstName"), firstName);
+			}
+		};
+	}
+
 	public static Specification<Customer> containsFirstName(String firstName) {
 		return Objects.isNull(firstName) ? null : new Specification<Customer>() {
 			@Override
