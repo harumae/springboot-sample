@@ -16,3 +16,11 @@ spring:
     username: sb_user
     password: sb_pass
     driverClassName: com.mysql.jdbc.Driver
+
+multipart:
+  maxFileSize: 20MB
+  maxRequestSize: 20MB
+
+logging:
+  level:
+    local.mywork.springboot: INFO
